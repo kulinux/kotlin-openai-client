@@ -27,6 +27,8 @@ dependencies {
     implementation("com.google.guava:guava:32.1.1-jre")
 
     testImplementation("io.kotest:kotest-runner-junit5:5.8.0")
+
+    implementation(project(":lib"))
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
