@@ -35,6 +35,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
     implementation("io.arrow-kt:arrow-core:1.2.1")
     implementation("io.arrow-kt:arrow-fx-coroutines:1.2.1")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
 }
 
 // Apply a specific Java toolchain to ease working on different environments.

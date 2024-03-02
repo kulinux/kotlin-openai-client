@@ -6,7 +6,7 @@ import paben.openai.client.Message
 import paben.openai.client.OpenAIClient
 
 class OpenAIClientBehave : BehaviorSpec({
-    val KEY = "1234556"
+    val KEY = "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"
     Given("An authenticated OpenAI api") {
         val openAIClient = OpenAIClient().withKey(KEY)
         When("I use the client api") {
