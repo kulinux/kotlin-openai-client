@@ -3,12 +3,16 @@ package paben.openai.clientusage
 import io.kotest.core.spec.style.BehaviorSpec
 import io.kotest.matchers.shouldBe
 import paben.openai.client.Message
-import paben.openai.client.OpenAIClient
+import paben.openai.client.OpenAIClientBuilder
 
 class OpenAIClientBehave : BehaviorSpec({
-    val KEY = "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"
+    val key = "One key"
     Given("An authenticated OpenAI api") {
-        val openAIClient = OpenAIClient().withKey(KEY)
+        val openAIClient = OpenAIClientBuilder
+            .builder()
+            .withKey(key)
+            .build()!!
+
         When("I use the client api") {
             val res = openAIClient.completions(listOf( Message("system", "you are a happy servant")))
             Then("The api should respond") {

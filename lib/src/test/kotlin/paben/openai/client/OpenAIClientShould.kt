@@ -5,7 +5,8 @@ import io.kotest.matchers.shouldBe
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
-import okhttp3.OkHttpClient
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import okhttp3.Response
 
 class OpenAIClientShould : StringSpec({
@@ -15,13 +16,14 @@ class OpenAIClientShould : StringSpec({
         val messages = listOf(Message("system", "You are Darth Vader"))
         val response = mockk<Response>()
         val completion = Completion(model = "gpt-3.5-turbo", messages)
+        val json = Json.encodeToString(completion)
 
         every {  response.isSuccessful } returns true
-        every {  rest.post(completion) } returns response
+        every {  rest.post("/chat/completions", json) } returns response
 
         val res = openAIClient.completions(messages)
 
-        verify { rest.post(completion) }
+        verify { rest.post("/chat/completions", json) }
         res shouldBe true
     }
 
